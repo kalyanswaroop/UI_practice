@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head >
+	<title>Contractor Details</title>
+	<link rel="stylesheet" href=" contractor.css" media="all" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<style>
+		.legend_box{
+		margin-bottom:0;
+		padding-top:30px;
+		}
+		#list{
+			display:none
+			padding-top:20px;
+		}
+	</style>
+</head>
+<body class="container">
+	<form id="contractor_form">
+		 <fieldset>
+			  <legend class="legend_box">Add New Contractor</legend>
+				 <table class="table">
+					<tr>
+						<th>Contractor Name: </th>
+						 <td><input type="text" id="contractor_name" data-toggle="popover" title="Popover title" data-content="Enter Name"></td>
+					</tr>
+					<tr> 
+						<th>Contact Number:</th>
+						<td><input type="text" id="contractor_number"></td>
+					</tr>
+					<tr>
+						<th>Aadhar Number:</th>
+						<td><input type="text" id="contractor_Aadhar"></td>
+					</tr>
+					<tr>
+						<th>Address:</th>
+						<td><textarea class="form-control" rows="3" id="contractor_address"></textarea></td>
+					<tr>
+				</table>
+			
+			  <button type="button" value="Save Details" id="validate_form">Save Details</button>
+		 </fieldset>
+	</form>
+	
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="contractor.js"></script>
+	<p id="list">
+		<table class="table">
+			<tr><th> Name</th><td id="name1"></td></tr>
+			<tr><th> Number</th><td id="number1"></td></tr>
+			<tr><th> Aadhar</th><td id="aadhar1"></td></tr>
+		</table>
+	</p>
+<script>
+	$("#validate_form").on("click",function(){
+		contractorDetails();
+	});
+	function contractorDetails(){
+		var name=$("#contractor_name").val();
+			 if(name.length == ""){
+			 $('#contractor_name').text("Provide contractor name");
+			 return false;
+			 }
+		var number=$("#contractor_number").val();
+			<!-- if(number == "" || !number.match(/^0[0-9]{9}$/)){ -->
+			 <!-- $('#contractor_form').text("invalid number"); -->
+			 <!-- return false; -->
+			 <!-- } -->
+		var aadhar=$("#contractor_Aadhar").val();
+			if(aadhar.length == ""){
+			 $('#contractor_form').text("This is not a valid Aadhar number");
+			 return false;
+			 }
+		
+		$("#list").show();
+		$("#name1").html(name);
+		$("#number1").html(number);
+		$("#aadhar1").html(aadhar);
+	}
+</script>
+
+</body>
+</html>
